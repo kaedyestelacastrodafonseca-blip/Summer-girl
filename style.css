@@ -191,14 +191,16 @@ h2 {
 }
 
 .produto-imagem {
-    height: 300px;
-    background-color: #f5dce3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    border-radius: 10px;
+    height: 380px;
+    overflow: hidden;
     margin-bottom: 20px;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .produto h3 {
