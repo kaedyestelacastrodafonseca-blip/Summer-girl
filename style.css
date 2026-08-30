@@ -6,8 +6,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff8fa;
-    color: #3d3035;
+    background-color: #fffaf5;
+    color: #3d2528;
 }
 
 /* CABEÇALHO */
@@ -23,7 +23,7 @@ header {
 }
 
 .logo {
-    color: #d95c82;
+    color: #e85d75;
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 3px;
@@ -35,7 +35,7 @@ nav {
 }
 
 nav a {
-    color: #3d3035;
+    color: #3d2528;
     text-decoration: none;
     font-size: 14px;
 }
