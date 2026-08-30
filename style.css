@@ -51,17 +51,21 @@ nav a:hover {
 /* BANNER */
 
 .banner {
-    min-height: 600px;
+    min-height: 650px;
     display: flex;
     align-items: center;
     padding: 60px 10%;
 
-    background: linear-gradient(
+    background:
+        linear-gradient(
         90deg,
-        #f4c6d4,
-        #f9dfe6,
-        #fff8fa
-    );
+            rgba(35, 18, 20, 0.55),
+            rgba(35, 18, 20, 0.15)
+        ),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80");
+
+    background-size: cover;
+    background-position: center;
 }
 
 .banner-texto {
@@ -69,7 +73,7 @@ nav a:hover {
 }
 
 .banner-texto p:first-child {
-    color: #c84f76;
+    color: #ffd6a5
     font-weight: bold;
     letter-spacing: 3px;
     margin-bottom: 15px;
@@ -79,12 +83,14 @@ nav a:hover {
     font-size: 60px;
     line-height: 1.05;
     margin-bottom: 25px;
+    color: white;
 }
 
 .banner-texto p {
     font-size: 17px;
     line-height: 1.6;
     margin-bottom: 25px;
+    color: white; 
 }
 
 /* BOTÕES */
