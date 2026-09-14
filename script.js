@@ -1,1 +1,1 @@
-alert("O javascript da summer girl esta funcionando!");
+alert("TESTE SUMMER GIRL!");
