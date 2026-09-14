@@ -1,84 +1,57 @@
-// ==============================
+// ==========================================
 // SUMMER GIRL - CARRINHO
-// ==============================
+// ==========================================
 
-// Lista de produtos da loja
-const produtos = [
-    {
-        nome: "Biquíni Summer",
-        preco: 89.90
-    },
-    {
-        nome: "Saída de Praia",
-        preco: 119.90
-    },
-    {
-        nome: "Bolsa Summer",
-        preco: 79.90
-    },
-    {
-        nome: "Óculos de Sol",
-        preco: 59.90
-    }
-];
+// Pegamos o ícone do carrinho no HTML
+const carrinhoBotao = document.getElementById("carrinho");
 
+// Criamos a área do carrinho
+const carrinho = document.createElement("div");
 
-// Carrinho começa vazio
-let carrinho = [];
+carrinho.id = "carrinho-menu";
 
+carrinho.innerHTML = `
+    <div>
+        <h2>Meu carrinho 🛍️</h2>
 
-// ==============================
-// MOSTRAR OS PRODUTOS
-// ==============================
+        <p>Seu carrinho está vazio.</p>
 
-const body = document.body;
-
-const areaProdutos = document.createElement("section");
-
-areaProdutos.id = "produtos";
-
-areaProdutos.innerHTML = `
-    <h2>Nossos produtos 🌸</h2>
+        <button id="fechar-carrinho">
+            Fechar
+        </button>
+    </div>
 `;
 
+// Colocamos o carrinho na página
+document.body.appendChild(carrinho);
 
-// Criar cada produto na página
-produtos.forEach(function(produto, indice) {
 
-    const card = document.createElement("div");
+// ==========================================
+// ABRIR O CARRINHO
+// ==========================================
 
-    card.className = "produto";
+carrinhoBotao.addEventListener("click", function() {
 
-    card.innerHTML = `
-        <h3>${produto.nome}</h3>
-        <p>R$ ${produto.preco.toFixed(2).replace(".", ",")}</p>
-
-        <button onclick="adicionarAoCarrinho(${indice})">
-            Adicionar ao carrinho 🛍️
-        </button>
-    `;
-
-    areaProdutos.appendChild(card);
+    carrinho.style.display = "block";
 
 });
 
 
-// Colocar os produtos no final da página
-body.appendChild(areaProdutos);
+// ==========================================
+// FECHAR O CARRINHO
+// ==========================================
+
+const fecharCarrinho = document.getElementById("fechar-carrinho");
+
+fecharCarrinho.addEventListener("click", function() {
+
+    carrinho.style.display = "none";
+
+});
 
 
-// ==============================
-// ADICIONAR AO CARRINHO
-// ==============================
+// ==========================================
+// CARRINHO COMEÇA FECHADO
+// ==========================================
 
-function adicionarAoCarrinho(indice) {
-
-    const produto = produtos[indice];
-
-    carrinho.push(produto);
-
-    alert(produto.nome + " foi adicionado ao carrinho! 💗");
-
-    console.log(carrinho);
-
-}
+carrinho.style.display = "none";
