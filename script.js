@@ -27,3 +27,15 @@ botaoCarrinho.onclick = function() {
 document.getElementById("fecharCarrinho").onclick = function() {
     carrinho.style.display = "none";
 };
+
+let quantidadeCarrinho = 0;
+
+const contador = document.createElement("span");
+
+contador.id = "contador-carrinho";
+contador.textContent = quantidadeCarrinho;
+
+contador.style.marginLeft = "4px";
+contador.style.fontWeight = "bold";
+
+document.getElementById("carrinho").appendChild(contador);
