@@ -1,125 +1,129 @@
-const botaoCarrinho = document.getElementById("carrinho");
+document.addEventListener("DOMContentLoaded", function () {
 
-const carrinho = document.createElement("div");
+    const botaoCarrinho = document.getElementById("carrinho");
 
-carrinho.innerHTML = `
-    <h2>Meu carrinho 🛍️</h2>
+    // Se a página não tiver o carrinho, não faz nada
+    if (!botaoCarrinho) {
+        return;
+    }
 
-    <div id="itensCarrinho">
-        <p>Seu carrinho está vazio.</p>
-    </div>
+    const carrinho = document.createElement("div");
 
-    <p id="totalCarrinho">Total: R$ 0,00</p>
+    carrinho.innerHTML = `
+        <h2>Meu carrinho 🛍️</h2>
 
-    <button id="fecharCarrinho">Fechar</button>
-`;
+        <div id="itensCarrinho">
+            <p>Seu carrinho está vazio.</p>
+        </div>
 
-carrinho.style.position = "fixed";
-carrinho.style.top = "80px";
-carrinho.style.right = "20px";
-carrinho.style.background = "white";
-carrinho.style.padding = "20px";
-carrinho.style.borderRadius = "15px";
-carrinho.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
-carrinho.style.zIndex = "9999";
-carrinho.style.display = "none";
+        <p id="totalCarrinho">Total: R$ 0,00</p>
 
-document.body.appendChild(carrinho);
+        <button id="fecharCarrinho">Fechar</button>
+    `;
 
-
-// CONTADOR
-let quantidadeCarrinho = 0;
-
-const contador = document.createElement("span");
-
-contador.id = "contador-carrinho";
-contador.textContent = quantidadeCarrinho;
-
-contador.style.marginLeft = "4px";
-contador.style.fontWeight = "bold";
-
-botaoCarrinho.appendChild(contador);
-
-
-// ABRIR CARRINHO
-botaoCarrinho.onclick = function() {
-    carrinho.style.display = "block";
-};
-
-
-// FECHAR CARRINHO
-document.getElementById("fecharCarrinho").onclick = function() {
+    carrinho.style.position = "fixed";
+    carrinho.style.top = "80px";
+    carrinho.style.right = "20px";
+    carrinho.style.background = "white";
+    carrinho.style.padding = "20px";
+    carrinho.style.borderRadius = "15px";
+    carrinho.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
+    carrinho.style.zIndex = "9999";
     carrinho.style.display = "none";
-};
+
+    document.body.appendChild(carrinho);
 
 
-// PRODUTOS
-const botoesAdicionar = document.querySelectorAll(".btn-carrinho");
+    // CONTADOR
+    let quantidadeCarrinho = 0;
 
-botoesAdicionar.forEach(function(botao) {
+    const contador = document.createElement("span");
 
-    botao.onclick = function() {
+    contador.id = "contador-carrinho";
+    contador.textContent = quantidadeCarrinho;
 
-        const produto = botao.closest(".produto-card");
+    contador.style.marginLeft = "4px";
+    contador.style.fontWeight = "bold";
 
-        const nome = produto.querySelector("h3").textContent;
-        const precoTexto = produto.querySelector(".preco").textContent;
+    botaoCarrinho.appendChild(contador);
 
-        const preco = parseFloat(
-            precoTexto
-                .replace("R$", "")
-                .replace(".", "")
-                .replace(",", ".")
-        );
 
-        quantidadeCarrinho++;
-
-        contador.textContent = quantidadeCarrinho;
-
-        const itensCarrinho = document.getElementById("itensCarrinho");
-
-        if (quantidadeCarrinho === 1) {
-            itensCarrinho.innerHTML = "";
-        }
-
-        const item = document.createElement("p");
-
-        item.textContent = `${nome} - ${precoTexto}`;
-
-        itensCarrinho.appendChild(item);
-
-        atualizarTotal();
+    // ABRIR CARRINHO
+    botaoCarrinho.onclick = function () {
+        carrinho.style.display = "block";
     };
-});
 
 
-// TOTAL
-let total = 0;
+    // FECHAR CARRINHO
+    document.getElementById("fecharCarrinho").onclick = function () {
+        carrinho.style.display = "none";
+    };
 
-function atualizarTotal() {
 
-    total = 0;
+    // PRODUTOS
+    const botoesAdicionar = document.querySelectorAll(".btn-carrinho");
 
-    const itens = document.querySelectorAll("#itensCarrinho p");
+    botoesAdicionar.forEach(function (botao) {
 
-    itens.forEach(function(item) {
+        botao.onclick = function () {
 
-        const texto = item.textContent;
+            const produto = botao.closest(".produto-card");
 
-        const precoTexto = texto.split(" - R$ ")[1];
+            const nome = produto.querySelector("h3").textContent;
+            const precoTexto = produto.querySelector(".preco").textContent;
 
-        if (precoTexto) {
+            quantidadeCarrinho++;
 
-            const preco = parseFloat(
-                precoTexto
-                    .replace(".", "")
-                    .replace(",", ".")
-            );
+            contador.textContent = quantidadeCarrinho;
 
-            total += preco;
-        }
+            const itensCarrinho = document.getElementById("itensCarrinho");
+
+            if (quantidadeCarrinho === 1) {
+                itensCarrinho.innerHTML = "";
+            }
+
+            const item = document.createElement("p");
+
+            item.textContent = `${nome} - ${precoTexto}`;
+
+            itensCarrinho.appendChild(item);
+
+            atualizarTotal();
+        };
+
     });
 
-    document.getElementById("totalCarrinho").textContent =
-        `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
-}
+
+    // TOTAL
+    let total = 0;
+
+    function atualizarTotal() {
+
+        total = 0;
+
+        const itens = document.querySelectorAll("#itensCarrinho p");
+
+        itens.forEach(function (item) {
+
+            const texto = item.textContent;
+
+            const precoTexto = texto.split(" - R$ ")[1];
+
+            if (precoTexto) {
+
+                const preco = parseFloat(
+                    precoTexto
+                        .replace(".", "")
+                        .replace(",", ".")
+                );
+
+                total += preco;
+            }
+
+        });
+
+        document.getElementById("totalCarrinho").textContent =
+            `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
+    }
+
+});
