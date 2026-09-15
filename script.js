@@ -1,4 +1,5 @@
 const botaoCarrinho = document.getElementById("carrinho");
+
 if (botaocarrinho) {
 
 const carrinho = document.createElement("div");
