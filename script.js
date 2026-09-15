@@ -295,7 +295,7 @@ entrar.onclick = function() {
         return;
     }
 
-    alert("Login realizado com sucesso! 🌸");
+    alert ("Login realizado com sucesso! 🌸");
 
     telaLogin.style.display = "none";
 };
