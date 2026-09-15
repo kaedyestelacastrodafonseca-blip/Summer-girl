@@ -176,3 +176,110 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+// LOGIN
+const botaoLogin = document.querySelector(".icones span:nth-child(2)");
+
+if (botaoLogin) {
+
+    const telaLogin = document.createElement("div");
+
+    telaLogin.innerHTML = `
+        <div id="caixaLogin">
+            <button id="fecharLogin">×</button>
+
+            <h2>Bem-vinda à Summer Girl 🌸</h2>
+            <p>Entre na sua conta</p>
+
+            <input type="email" id="emailLogin" placeholder="Seu e-mail">
+
+            <input type="password" id="senhaLogin" placeholder="Sua senha">
+
+            <button id="entrarLogin">Entrar</button>
+        </div>
+    `;
+
+    telaLogin.style.position = "fixed";
+    telaLogin.style.top = "0";
+    telaLogin.style.left = "0";
+    telaLogin.style.width = "100%";
+    telaLogin.style.height = "100%";
+    telaLogin.style.background = "rgba(0, 0, 0, 0.35)";
+    telaLogin.style.display = "none";
+    telaLogin.style.justifyContent = "center";
+    telaLogin.style.alignItems = "center";
+    telaLogin.style.zIndex = "10000";
+
+    document.body.appendChild(telaLogin);
+
+
+    // CAIXA DO LOGIN
+    const caixaLogin = document.getElementById("caixaLogin");
+
+    caixaLogin.style.background = "#fff8fa";
+    caixaLogin.style.padding = "30px";
+    caixaLogin.style.borderRadius = "20px";
+    caixaLogin.style.width = "320px";
+    caixaLogin.style.maxWidth = "80%";
+    caixaLogin.style.textAlign = "center";
+    caixaLogin.style.boxShadow = "0 8px 30px rgba(0,0,0,0.2)";
+
+
+    // TÍTULO
+    caixaLogin.querySelector("h2").style.color = "#d95c82";
+    caixaLogin.querySelector("h2").style.marginBottom = "5px";
+
+
+    // CAMPOS
+    const campos = caixaLogin.querySelectorAll("input");
+
+    campos.forEach(function(campo) {
+        campo.style.width = "100%";
+        campo.style.boxSizing = "border-box";
+        campo.style.padding = "12px";
+        campo.style.marginTop = "10px";
+        campo.style.border = "1px solid #f0b6c8";
+        campo.style.borderRadius = "10px";
+        campo.style.outline = "none";
+    });
+
+
+    // BOTÃO ENTRAR
+    const entrar = document.getElementById("entrarLogin");
+
+    entrar.style.width = "100%";
+    entrar.style.padding = "12px";
+    entrar.style.marginTop = "15px";
+    entrar.style.border = "none";
+    entrar.style.borderRadius = "10px";
+    entrar.style.background = "#d95c82";
+    entrar.style.color = "white";
+    entrar.style.fontWeight = "bold";
+    entrar.style.cursor = "pointer";
+
+
+    // BOTÃO FECHAR
+    const fecharLogin = document.getElementById("fecharLogin");
+
+    fecharLogin.style.position = "absolute";
+    fecharLogin.style.marginLeft = "130px";
+    fecharLogin.style.marginTop = "-20px";
+    fecharLogin.style.border = "none";
+    fecharLogin.style.background = "none";
+    fecharLogin.style.fontSize = "28px";
+    fecharLogin.style.color = "#d95c82";
+    fecharLogin.style.cursor = "pointer";
+
+
+    // ABRIR LOGIN
+    botaoLogin.onclick = function() {
+        telaLogin.style.display = "flex";
+    };
+
+
+    // FECHAR LOGIN
+    fecharLogin.onclick = function() {
+        telaLogin.style.display = "none";
+    };
+
+}
