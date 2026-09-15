@@ -4,7 +4,13 @@ const carrinho = document.createElement("div");
 
 carrinho.innerHTML = `
     <h2>Meu carrinho 🛍️</h2>
-    <p>Seu carrinho está vazio.</p>
+
+    <div id="itensCarrinho">
+        <p>Seu carrinho está vazio.</p>
+    </div>
+
+    <p id="totalCarrinho">Total: R$ 0,00</p>
+
     <button id="fecharCarrinho">Fechar</button>
 `;
 
@@ -20,14 +26,8 @@ carrinho.style.display = "none";
 
 document.body.appendChild(carrinho);
 
-botaoCarrinho.onclick = function() {
-    carrinho.style.display = "block";
-};
 
-document.getElementById("fecharCarrinho").onclick = function() {
-    carrinho.style.display = "none";
-};
-
+// CONTADOR
 let quantidadeCarrinho = 0;
 
 const contador = document.createElement("span");
@@ -38,4 +38,88 @@ contador.textContent = quantidadeCarrinho;
 contador.style.marginLeft = "4px";
 contador.style.fontWeight = "bold";
 
-document.getElementById("carrinho").appendChild(contador);
+botaoCarrinho.appendChild(contador);
+
+
+// ABRIR CARRINHO
+botaoCarrinho.onclick = function() {
+    carrinho.style.display = "block";
+};
+
+
+// FECHAR CARRINHO
+document.getElementById("fecharCarrinho").onclick = function() {
+    carrinho.style.display = "none";
+};
+
+
+// PRODUTOS
+const botoesAdicionar = document.querySelectorAll(".btn-carrinho");
+
+botoesAdicionar.forEach(function(botao) {
+
+    botao.onclick = function() {
+
+        const produto = botao.closest(".produto-card");
+
+        const nome = produto.querySelector("h3").textContent;
+        const precoTexto = produto.querySelector(".preco").textContent;
+
+        const preco = parseFloat(
+            precoTexto
+                .replace("R$", "")
+                .replace(".", "")
+                .replace(",", ".")
+        );
+
+        quantidadeCarrinho++;
+
+        contador.textContent = quantidadeCarrinho;
+
+        const itensCarrinho = document.getElementById("itensCarrinho");
+
+        if (quantidadeCarrinho === 1) {
+            itensCarrinho.innerHTML = "";
+        }
+
+        const item = document.createElement("p");
+
+        item.textContent = `${nome} - ${precoTexto}`;
+
+        itensCarrinho.appendChild(item);
+
+        atualizarTotal();
+    };
+});
+
+
+// TOTAL
+let total = 0;
+
+function atualizarTotal() {
+
+    total = 0;
+
+    const itens = document.querySelectorAll("#itensCarrinho p");
+
+    itens.forEach(function(item) {
+
+        const texto = item.textContent;
+
+        const precoTexto = texto.split(" - R$ ")[1];
+
+        if (precoTexto) {
+
+            const preco = parseFloat(
+                precoTexto
+                    .replace(".", "")
+                    .replace(",", ".")
+            );
+
+            total += preco;
+        }
+    });
+
+    document.getElementById("totalCarrinho").textContent =
+        `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
+}
