@@ -283,3 +283,19 @@ if (botaoLogin) {
     };
 
 }
+
+// FUNCIONAMENTO DO LOGIN
+entrar.onclick = function() {
+
+    const email = document.getElementById("emailLogin").value;
+    const senha = document.getElementById("senhaLogin").value;
+
+    if (email === "" || senha === "") {
+        alert("Preencha seu e-mail e sua senha 💗");
+        return;
+    }
+
+    alert("Login realizado com sucesso! 🌸");
+
+    telaLogin.style.display = "none";
+};
