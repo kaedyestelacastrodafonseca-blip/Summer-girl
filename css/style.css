@@ -842,3 +842,419 @@ a {
     transform: translateY(-2px);
 
 }
+/* =========================
+   PRODUTOS (ROUPAS)
+========================= */
+
+.produtos {
+    padding: 55px 6%;
+    background-color: #ffffff;
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.produto-card {
+    background-color: #fff8fa;
+    border: 1px solid #f4dce4;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(223, 91, 140, 0.15);
+}
+
+.produto-imagem {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.produto-card:hover .produto-imagem img {
+    transform: scale(1.05);
+}
+
+.produto-detalhes {
+    padding: 20px;
+    text-align: center;
+}
+
+.produto-detalhes h3 {
+    font-size: 16px;
+    color: #704f5b;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.produto-detalhes .preco {
+    font-size: 18px;
+    color: #df5b8c;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   SELEÇÃO DE TAMANHOS
+========================= */
+
+.tamanhos {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.tamanhos span {
+    border: 1px solid #df5b8c;
+    color: #df5b8c;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.tamanhos span:hover {
+    background-color: #f7dfe5;
+}
+
+/* Efeito ao clicar/selecionar o tamanho */
+.tamanhos span.selecionado {
+    background-color: #df5b8c;
+    color: #ffffff;
+    border-color: #df5b8c;
+    box-shadow: 0 2px 6px rgba(223, 91, 140, 0.4);
+}
+
+/* =========================
+   BOTÃO ADICIONAR
+========================= */
+
+.btn-carrinho {
+    width: 100%;
+    background-color: #e65c90;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-carrinho:hover {
+    background-color: #da477d;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVIDADE PRODUTOS
+========================= */
+
+@media (max-width: 900px) {
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .produtos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Fundo da seção de produtos */
+.produtos {
+    padding: 55px 6%;
+    background-color: #fff2f6; /* Altere este código para testar outras cores */
+}
+
+/* Opcional: destaque leve para os cards sobre o fundo */
+.produto-card {
+    background-color: #ffffff; /* Card branco para destacar no fundo rosa suave */
+    border: 1px solid #f4dce4;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+/* =========================
+   MELHORIAS DE DESIGN E UX
+========================= */
+
+/* Smooth scroll para navegação suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Título das seções */
+.titulo-secao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.titulo-secao h2 {
+    font-size: 24px;
+    color: #5a3e48;
+    font-weight: 700;
+}
+
+.titulo-secao a {
+    color: #df5b8c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.titulo-secao a:hover {
+    color: #b83b68;
+    text-decoration: underline;
+}
+
+/* Badge de "Lançamento" ou "Desconto" nas fotos (Opcional) */
+.produto-imagem {
+    position: relative;
+}
+
+.produto-card::before {
+    content: "Novo ✨";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #df5b8c;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+/* Animação suave para cliques no botão */
+.btn-carrinho:active {
+    transform: scale(0.97);
+}
+
+/* Sombra e acabamento de rolagem suave */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff0f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f4dce4;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #df5b8c;
+}
+/* BANNER PRINCIPAL */
+.banner-principal {
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('imagens/outfits/look-branco-verao.jpg.jpeg') center/cover no-repeat;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.banner-conteudo h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.banner-conteudo p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.btn-banner {
+    display: inline-block;
+    background-color: #df5b8c;
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-banner:hover {
+    background-color: #b83b68;
+    transform: scale(1.05);
+}
+
+/* MODAL DO CARRINHO */
+.modal-carrinho {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-conteudo {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #704f5b;
+}
+
+.carrinho-total {
+    margin-top: 20px;
+    border-top: 1px solid #f4dce4;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.btn-finalizar {
+    width: 100%;
+    background-color: #25d366;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* RODAPÉ */
+.rodape {
+    background-color: #fff0f5;
+    border-top: 1px solid #f4dce4;
+    padding: 40px 6% 20px;
+    margin-top: 50px;
+}
+
+/* RODAPÉ COMPACTO */
+.rodape {
+    background-color: #db74bc;
+    border-top: 1px solid #c291a1;
+    padding: 20px 6% 15px;
+    margin-top: 40px;
+}
+
+.rodape-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.rodape-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rodape-info h3 {
+    color: #df5b8c;
+    font-size: 16px;
+    margin: 0;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 15px;
+}
+
+.link-rede {
+    color: #704f5b;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.link-rede:hover {
+    color: #df5b8c;
+}
+
+.rodape-pagamento {
+    color: #704f5b;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Direitos autorais com tom legível (marrom rosado escuro) */
+.rodape-direitos {
+    text-align: center;
+    border-top: 1px dashed #f4dce4;
+    padding-top: 10px;
+}
+
+.rodape-direitos p {
+    font-size: 12px;
+    color: #704f5b;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* RESPONSIVO PARA CELULAR */
+@media (max-width: 600px) {
+    .rodape-conteudo {
+        flex-direction: column;
+        text-align: center;
+    }
+    .rodape-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .redes-sociais {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
