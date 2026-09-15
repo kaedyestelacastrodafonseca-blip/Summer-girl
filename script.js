@@ -124,4 +124,5 @@ function atualizarTotal() {
     document.getElementById("totalCarrinho").textContent =
         `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
 }
+    
 }
