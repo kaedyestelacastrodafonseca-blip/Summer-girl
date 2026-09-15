@@ -1,7 +1,5 @@
 const botaoCarrinho = document.getElementById("carrinho");
 
-if (botaocarrinho) {
-
 const carrinho = document.createElement("div");
 
 carrinho.innerHTML = `
@@ -124,6 +122,4 @@ function atualizarTotal() {
 
     document.getElementById("totalCarrinho").textContent =
         `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
-}
-    
 }
